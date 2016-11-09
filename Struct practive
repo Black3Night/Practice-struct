@@ -1,0 +1,47 @@
+#include	<stdio.h>
+#include	<string.h>
+
+struct	planeta{
+	char	planeta[15];
+	float	distancia_sol;
+	float	diametro;
+};
+
+void	cargar_datos(struct	planeta *p);
+void	imprimir_datos(struct planeta p);
+
+int main(){
+	
+	struct	planeta tierra,otro_planeta;
+	
+	strcpy(tierra.planeta,"Tierra");
+	tierra.distancia_sol=149600000;
+	tierra.diametro=12742;
+	
+	imprimir_datos(tierra);
+	cargar_datos(&otro_planeta);
+	imprimir_datos(otro_planeta);
+	
+	return	0;
+}
+
+void	cargar_datos(struct planeta *p){
+	
+	printf	("Nombre del planeta: ");
+	fflush	(stdin);
+	gets	(p->planeta);	//Otro equivalente (*p).direccion_de_la_estrcuctura
+	
+	printf	("Iingrese distancia al sol");
+	scanf	("%f",(*p).distancia_sol);
+	
+	printf	("Diametro del planeta");
+	scanf	("%f",&p->diametro); //operador flecha para acceder a la varible de tipo struct
+	
+}
+void	imprimir_datos(struct planeta p){
+	
+	printf	("Nombre del planeta %s\n",p.planeta);
+	printf	("Distacia al sol: %f",p.distancia_sol);
+	printf	("Diametro del palneta: %f",p.diametro);
+	
+}
